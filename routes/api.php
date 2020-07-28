@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+// Encapsulate APIs to validate access whit api_key from users table.
+Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
+    // Define route of API to: UseCase: Store entrance ticket in parking system
+    Route::post('ticket-entrance', 'TicketController@storeEntrance')->name('ticket.entrance');
 });
