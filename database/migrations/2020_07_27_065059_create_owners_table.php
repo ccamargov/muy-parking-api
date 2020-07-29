@@ -14,11 +14,11 @@ class CreateOwnersTable extends Migration
     public function up()
     {
         Schema::create('owners', function (Blueprint $table) {
-            $table->string('document_number', 20)->nulleable(false)->unique();;
-            $table->string('names', 50)->nulleable(false);
-            $table->string('surnames', 50);
-            $table->string('tel_contact', 20)->nulleable(false);
-            $table->string('email_contact', 40);
+            $table->string('document_number', 20)->nullable(false)->unique();;
+            $table->string('names', 50)->nullable(false);
+            $table->string('surnames', 50)->nullable();
+            $table->string('tel_contact', 20)->nullable(false);
+            $table->string('email_contact', 40)->nullable();
             $table->boolean('is_resident')->default(false);
             $table->timestamps();
         });

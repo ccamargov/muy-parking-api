@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\Owner;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
 
@@ -17,13 +17,13 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(Owner::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'api_token' => Str::random(60), //API Security. Needs to get from database any api_token, to use the api restfulls.
-        'remember_token' => Str::random(10),
+        'document_number' => Str::random(11),
+        'names' => $faker->name,
+        'surnames' => $faker->name,
+        'tel_contact' => $faker->tollFreePhoneNumber,
+        'email_contact' => $faker->email,
+        'is_resident' => (bool) random_int(0, 1)
     ];
 });

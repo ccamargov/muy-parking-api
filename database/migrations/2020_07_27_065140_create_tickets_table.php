@@ -16,14 +16,14 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
             // Define model relations
-            $table->foreignId('parking_contract_id')->constrained('parking_contracts')->nulleable(false);
+            $table->foreignId('parking_contract_id')->constrained('parking_contracts')->nullable(false);
             // Ticket data
-            $table->timestamp('entry_time');
-            $table->timestamp('exit_time');
-            $table->decimal('charge_paid', 2, 2);
-            $table->decimal('exchange_value', 2, 2);
-            $table->timestamp('payment_time');
-            $table->decimal('total_stay_mins', 1, 1);
+            $table->timestamp('entry_time')->nullable(false);
+            $table->timestamp('exit_time')->nullable();
+            $table->decimal('charge_paid', 2, 2)->nullable();
+            $table->decimal('exchange_value', 2, 2)->nullable();
+            $table->timestamp('payment_time')->nullable();
+            $table->decimal('total_stay_mins', 1, 1)->nullable();
             $table->timestamps();
         });
     }

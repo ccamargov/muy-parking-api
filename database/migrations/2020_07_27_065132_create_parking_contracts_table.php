@@ -18,9 +18,9 @@ class CreateParkingContractsTable extends Migration
             $table->string('owner_id', 20)->nullable(false);
             $table->string('vehicle_id', 10)->nullable(false);
             $table->unsignedBigInteger('plan_id')->nullable(false);
-            $table->timestamp('start_date_plan')->nulleable(false);
-            $table->timestamp('finish_date_plan')->nulleable(false);
-            $table->boolean('is_active')->nulleable(false)->default(true);
+            $table->timestamp('start_date_plan')->nullable(false);
+            $table->timestamp('finish_date_plan')->nullable(false);
+            $table->boolean('is_active')->nullable(false)->default(true);
             $table->timestamps();
 
             // Define model relations

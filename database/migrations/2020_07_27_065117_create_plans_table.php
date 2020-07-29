@@ -16,13 +16,13 @@ class CreatePlansTable extends Migration
         Schema::create('plans', function (Blueprint $table) {
             $table->id();
             $table->string('name', 50);
-            $table->text('description');
-            $table->boolean('has_daily_payment')->nulleable(false)->default(false);
-            $table->decimal('daily_payment_charge', 2, 2);
-            $table->boolean('has_monthly_dynamic_payment')->nulleable(false)->default(false);
-            $table->decimal('monthly_dynamic_payment_charge', 2, 2);
-            $table->boolean('has_monthly_static_payment')->nulleable(false)->default(false);
-            $table->decimal('monthly_static_payment_charge', 2, 2);
+            $table->text('description')->nullable();
+            $table->boolean('has_daily_payment')->nullable(false)->default(false);
+            $table->decimal('daily_payment_charge')->nullable();
+            $table->boolean('has_monthly_dynamic_payment')->nullable(false)->default(false);
+            $table->decimal('monthly_dynamic_payment_charge')->nullable();
+            $table->boolean('has_monthly_static_payment')->nullable(false)->default(false);
+            $table->decimal('monthly_static_payment_charge')->nullable();
             $table->timestamps();
         });
     }

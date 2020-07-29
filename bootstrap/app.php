@@ -41,6 +41,9 @@ $app->singleton(
     App\Exceptions\Handler::class
 );
 
+// API Restfull - Authentication provider.
+$app->register(App\Providers\AuthServiceProvider::class);
+
 /*
 |--------------------------------------------------------------------------
 | Return The Application

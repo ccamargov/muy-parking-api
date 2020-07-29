@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "a98bde66-8f7c-40c3-bf0e-03ee54972c6e",
+		"name": "MUY ParkingAPI",
+		"description": "Collection with the requests to invoke the resources for the required APIs, for the project.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "[H.U 002] Save Entrance Ticket - 422 Params incomplete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{url_base}}/api/v1/ticket-entrance?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ticket-entrance"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
+			"name": "[H.U 002] Save Entrance Ticket - 200 Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"plate_number\": \"gX38Tk\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/api/v1/ticket-entrance?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ticket-entrance"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
