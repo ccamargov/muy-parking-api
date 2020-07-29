@@ -18,11 +18,14 @@ class Ticket extends Model
      * @param  int  $parkingContractId
      * @return Illuminate\Support\Collection
      */
-    public static function findActiveTicketByParkingContract(int $parkingContractId)
+    public static function hasActiveTicketByParkingContract(int $parkingContractId)
     {
-        return Ticket::where('parking_contract_id', $parkingContractId)
-            ->whereNotNull('entry_time')
-            ->whereNull('exit_time')
-            ->get();
+        $tickets = Ticket::where('parking_contract_id', $parkingContractId)->get();
+        if (count($tickets) == 0) {
+            return false;
+        }
+        $ticketsFiltered = $tickets->whereNotNull('entry_time')
+            ->whereNull('exit_time');
+        return (count($ticketsFiltered) > 0);
     }
 }

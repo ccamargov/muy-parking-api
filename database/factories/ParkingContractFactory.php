@@ -2,9 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\User;
+use App\ParkingContract;
+use App\Owner;
+use App\Vehicle;
+use App\Plan;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +21,13 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
+$factory->define(ParkingContract::class, function (Faker $faker) {
     return [
-        'name' => $faker->name,
-        'email' => $faker->unique()->safeEmail,
-        'email_verified_at' => now(),
-        'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-        'api_token' => Str::random(60), //API Security. Needs to get from database any api_token, to use the api restfulls.
-        'remember_token' => Str::random(10),
+        'owner_id' => Owner::inRandomOrder()->first()->document_number,
+        'vehicle_id' => Vehicle::inRandomOrder()->first()->plate_number,
+        'plan_id' => Plan::inRandomOrder()->first()->id,
+        'start_date_plan' => Carbon::now(),
+        'finish_date_plan' => $faker->dateTime($max = 'now', $timezone = null),
+        'is_active' => true
     ];
 });

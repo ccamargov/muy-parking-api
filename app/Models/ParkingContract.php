@@ -40,6 +40,7 @@ class ParkingContract extends Model
     {
         return ParkingContract::where('vehicle_id', $plateNumber)
             ->where('is_active', true)
-            ->get();
+            ->get()
+            ->first();
     }
 }

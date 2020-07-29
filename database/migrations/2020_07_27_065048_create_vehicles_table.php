@@ -14,12 +14,12 @@ class CreateVehiclesTable extends Migration
     public function up()
     {
         Schema::create('vehicles', function (Blueprint $table) {
-            $table->string('plate_number', 10)->nulleable(false)->unique();
-            $table->string('color', 15);
-            $table->string('brand', 70);
-            $table->string('type', 20);
-            $table->string('model', 4)->nulleable(false);
-            $table->string('chassis_number', 17)->nulleable(false);
+            $table->string('plate_number', 10)->nullable(false)->unique();
+            $table->string('color', 15)->nullable();
+            $table->string('brand', 70)->nullable();
+            $table->string('type', 20)->nullable();
+            $table->string('model', 4)->nullable(false);
+            $table->string('chassis_number', 17)->nullable(false);
             $table->boolean('is_vip')->default(false);
             $table->timestamps();
         });
