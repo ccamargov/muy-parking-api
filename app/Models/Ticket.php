@@ -44,4 +44,20 @@ class Ticket extends Model
             ->first();
         return $tickets;
     }
+
+    /**
+     * Get active ticket by parkingContractId
+     *
+     * @param  int  $parkingContractId
+     * @return Illuminate\Support\Collection
+     */
+    public static function findTicketsWithPendingBalanceByContractsIds(array $contractsIds)
+    {
+        $tickets = Ticket::whereIn('parking_contract_id', $contractsIds)
+            ->whereNotNull('entry_time')
+            ->whereNotNull('exit_time')
+            ->whereNull('charge_paid')
+            ->get();
+        return $tickets;
+    }
 }
