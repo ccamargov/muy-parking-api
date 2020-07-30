@@ -14,7 +14,7 @@ use App\Ticket;
  * @runTestsInSeparateProcesses
  * @preserveGlobalState disabled
  */
-class StoreEntraceUseCaseTest extends TestCase {
+class StoreDepartureUseCaseTest extends TestCase {
 
     private const API_TOKEN = 'dHflQgl8BwxOpg1FpKOk0yu3TOXXuzGiIaPvZvNweiSM0O3fqK6UaP6ylrxy';
     private const PLATE_NUMBER = 'XPQkME';
@@ -25,7 +25,7 @@ class StoreEntraceUseCaseTest extends TestCase {
      * @return void
      */
     public function testApiWithNotPlateNumberParam() {
-        $response = $this->json('POST', 'api/v1/ticket-entrance', ['api_token' => self::API_TOKEN]);
+        $response = $this->json('POST', 'api/v1/ticket-departure', ['api_token' => self::API_TOKEN]);
         $response->assertStatus(422);
     }
 
@@ -42,7 +42,7 @@ class StoreEntraceUseCaseTest extends TestCase {
             ->andReturn(null);
         app()->instance(Vehicle::class, $vehicle);
 
-        $response = $this->call('POST', 'api/v1/ticket-entrance', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
+        $response = $this->call('POST', 'api/v1/ticket-departure', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
         $response->assertStatus(404);
     }
 
@@ -67,13 +67,13 @@ class StoreEntraceUseCaseTest extends TestCase {
             ->andReturn(null);
         app()->instance(ParkingContract::class, $parkingContract);
 
-        $response = $this->call('POST', 'api/v1/ticket-entrance', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
+        $response = $this->call('POST', 'api/v1/ticket-departure', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
         $response->assertStatus(404);
     }
 
     /**
      * Check the response of the use case when the vehicle exists, and have a
-     * contract parking with active ticket (Entrance time not null, but exit time null)
+     * contract parking with active ticket (departure time not null, but exit time null)
      *
      * @return void
      */
@@ -95,19 +95,19 @@ class StoreEntraceUseCaseTest extends TestCase {
         app()->instance(ParkingContract::class, $parkingContract);
 
         $ticket = Mockery::mock('overload:App\Ticket');
-        $ticket->shouldReceive('hasActiveTicketByParkingContract')
+        $ticket->shouldReceive('getActiveTicketByContractId')
             ->with(1)
             ->once()
-            ->andReturn(true);
+            ->andReturn(null);
         app()->instance(Ticket::class, $ticket);
 
-        $response = $this->call('POST', 'api/v1/ticket-entrance', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
+        $response = $this->call('POST', 'api/v1/ticket-departure', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
         $response->assertStatus(400);
     }
 
     /**
      * Check the response of the use case when the vehicle exists, and have a
-     * contract parking with active ticket (Entrance time not null, but exit time null)
+     * contract parking with active ticket (departure time not null, but exit time null)
      *
      * @return void
      */
@@ -129,10 +129,10 @@ class StoreEntraceUseCaseTest extends TestCase {
         app()->instance(ParkingContract::class, $parkingContract);
 
         $ticket = Mockery::mock('overload:App\Ticket');
-        $ticket->shouldReceive('hasActiveTicketByParkingContract')
+        $ticket->shouldReceive('getActiveTicketByContractId')
             ->with(1)
             ->once()
-            ->andReturn(false);
+            ->andReturn($ticket);
         app()->instance(Ticket::class, $ticket);
 
         // TO-DO: Not working - Fix it
@@ -143,7 +143,7 @@ class StoreEntraceUseCaseTest extends TestCase {
             ->andReturn($ticket);
         app()->instance(Ticket::class, $ticket);
 
-        $response = $this->call('POST', 'api/v1/ticket-entrance', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
+        $response = $this->call('POST', 'api/v1/ticket-departure', ['api_token' => self::API_TOKEN, 'plate_number' => self::PLATE_NUMBER]);
         // $response->assertStatus(200);
     }
 
