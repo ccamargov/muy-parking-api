@@ -57,4 +57,15 @@ class ParkingContract extends Model
             ->get()
             ->count();
     }
+
+    /**
+     * Find contracts related to vehicle (By plate number).
+     *
+     * @param  string  $plateNumber
+     * @return Illuminate\Support\Collection
+     */
+    public static function findContractsIdsArrayByPlateId(string $plateNumber)
+    {
+        return ParkingContract::where('vehicle_id', $plateNumber)->pluck('id')->toArray();
+    }
 }
