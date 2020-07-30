@@ -5,7 +5,6 @@ use App\Vehicle;
 use App\ParkingContract;
 use App\Ticket;
 use App\Plan;
-use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\TicketResource;
 use Illuminate\Support\Collection;
