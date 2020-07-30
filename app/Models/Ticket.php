@@ -28,4 +28,20 @@ class Ticket extends Model
             ->whereNull('exit_time');
         return (count($ticketsFiltered) > 0);
     }
+
+    /**
+     * Get active ticket by parkingContractId
+     *
+     * @param  int  $parkingContractId
+     * @return Illuminate\Support\Collection
+     */
+    public static function getActiveTicketByContractId(int $parkingContractId)
+    {
+        $tickets = Ticket::where('parking_contract_id', $parkingContractId)
+            ->whereNotNull('entry_time')
+            ->whereNull('exit_time')
+            ->get()
+            ->first();
+        return $tickets;
+    }
 }

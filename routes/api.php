@@ -18,4 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     // Define route of API to: UseCase: Store entrance ticket in parking system
     Route::post('ticket-entrance', 'TicketController@storeEntrance')->name('ticket.entrance');
+    // Define route of API to: UseCase: Store exit time to ticket in parking system
+    Route::post('ticket-departure', 'TicketController@storeDeparture')->name('ticket.departure');
 });
