@@ -51,10 +51,8 @@ class DatabaseSeeder extends Seeder
             $owners_collection = Owner::all();
             $plans_collection = Plan::all();
             echo 'Inserting dummy data for ParkingContract pivot model...\n';
-            for ($i = 0; $i <= $def_records_to_inser; $i++) {
-                // Adding providers tho random product.
-                factory(ParkingContract::class, $def_records_to_inser)->create();
-            }
+            // Adding providers tho random product.
+            factory(ParkingContract::class, $def_records_to_inser)->create();
         }
     }
 

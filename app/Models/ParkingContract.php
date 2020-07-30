@@ -43,4 +43,18 @@ class ParkingContract extends Model
             ->get()
             ->first();
     }
+
+    /**
+     * Find active contract related to vehicle (By plate number).
+     *
+     * @param  string  $plateNumber
+     * @return int
+     */
+    public static function getCountOfContractsActiveByPlateId(string $plateNumber)
+    {
+        return ParkingContract::where('vehicle_id', $plateNumber)
+            ->where('is_active', true)
+            ->get()
+            ->count();
+    }
 }
