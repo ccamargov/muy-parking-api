@@ -39,6 +39,47 @@
 			"response": []
 		},
 		{
+			"name": "[H.U 002] Save Entrance Ticket - 200 Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"plate_number\": \"Pg1JPz\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/api/v1/ticket-entrance?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"ticket-entrance"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
 			"name": "[H.U 003] Save Departure Ticket - 422 Params incomplete",
 			"request": {
 				"method": "POST",
@@ -71,7 +112,7 @@
 			"response": []
 		},
 		{
-			"name": "[H.U 002] Save Entrance Ticket - 200 Success",
+			"name": "[H.U 003] Save Departure Ticket - 200 Success",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -83,48 +124,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"plate_number\": \"yGoQsd\"\r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
-						}
-					}
-				},
-				"url": {
-					"raw": "{{url_base}}/api/v1/ticket-entrance?api_token={{api_token}}",
-					"host": [
-						"{{url_base}}"
-					],
-					"path": [
-						"api",
-						"v1",
-						"ticket-entrance"
-					],
-					"query": [
-						{
-							"key": "api_token",
-							"value": "{{api_token}}"
-						}
-					]
-				},
-				"description": "[H.U 002] Save Entrance Ticket"
-			},
-			"response": []
-		},
-		{
-			"name": "[H.U 002] Save Departure Ticket - 200 Success",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Accept",
-						"type": "text",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"plate_number\": \"yGoQsd\"\r\n}",
+					"raw": "{\r\n    \"plate_number\": \"Pg1JPz\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -140,6 +140,79 @@
 						"api",
 						"v1",
 						"ticket-departure"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
+			"name": "[H.U 004] Create Parking Contract - 422 Params incomplete",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url_base}}/api/v1/parking-contract?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"parking-contract"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
+			"name": "[H.U 004] Create Parking Contract - 200 Success",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"owner_id\": \"Seud3ti9pwv\",\r\n    \"vehicle_id\": \"cCJxWz\",\r\n    \"plan_id\": 6,\r\n    \"start_date_plan\": \"2020-07-30 02:04:08\",\r\n    \"finish_date_plan\": \"2020-10-30 02:04:08\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url_base}}/api/v1/parking-contract?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"parking-contract"
 					],
 					"query": [
 						{

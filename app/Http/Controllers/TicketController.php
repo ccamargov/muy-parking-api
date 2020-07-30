@@ -41,7 +41,7 @@ class TicketController extends Controller
     }
 
     /**
-     * Validate basic data to save a State record.
+     * Validate basic data to save the record.
      *
      * @param  Request  $request
      */
