@@ -15,7 +15,7 @@ use App\Vehicle;
  */
 class StoreParkingContractUseCaseTest extends TestCase {
 
-    private const API_TOKEN = 's2tUUqrD9iIUkrL9TNPrrUKtLTmSNUjZGnbz9SFvxMM25qARRAAONHs8IgDs';
+    private const API_TOKEN = 'f9xRfEujvTFWBJIybItPV9VxxAdErkxr7EAevVKzjscgIkJgC2fE6VA1n2Ye';
     private const PLATE_NUMBER = 'XPQkME';
 
     public $paramsToSend = [
@@ -28,7 +28,7 @@ class StoreParkingContractUseCaseTest extends TestCase {
     ];
 
     /**
-     * Check the response of the use case when the vehicle was not send in the request.
+     * Check the response of the use case when the request data was not send in the request.
      *
      * @return void
      */
