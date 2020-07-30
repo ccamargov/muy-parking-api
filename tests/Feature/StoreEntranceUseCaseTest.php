@@ -16,7 +16,7 @@ use App\Ticket;
  */
 class StoreEntraceUseCaseTest extends TestCase {
 
-    private const API_TOKEN = 'dHflQgl8BwxOpg1FpKOk0yu3TOXXuzGiIaPvZvNweiSM0O3fqK6UaP6ylrxy';
+    private const API_TOKEN = 's2tUUqrD9iIUkrL9TNPrrUKtLTmSNUjZGnbz9SFvxMM25qARRAAONHs8IgDs';
     private const PLATE_NUMBER = 'XPQkME';
 
     /**
@@ -106,8 +106,7 @@ class StoreEntraceUseCaseTest extends TestCase {
     }
 
     /**
-     * Check the response of the use case when the vehicle exists, and have a
-     * contract parking with active ticket (Entrance time not null, but exit time null)
+     * Check the response of the use case when all the validations are passed
      *
      * @return void
      */
