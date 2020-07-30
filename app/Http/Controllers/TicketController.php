@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\UseCases\StoreEntranceTicket;
 use App\UseCases\StoreDepartureTicket;
+use App\UseCases\ListPendingBalanceTickets;
 
 class TicketController extends Controller
 {
@@ -38,6 +39,21 @@ class TicketController extends Controller
         ]);
         $storeDepartureTicket = new StoreDepartureTicket($request->input('plate_number'));
         return $storeDepartureTicket->execute();
+    }
+
+    /**
+     * Create record for departure of ticket
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getTicketsWithPendingBalance(Request $request) {
+        $this->validateData($request, [
+            'plate_number' => 'required'
+        ]);
+        $listPendingBalanceTickets = new ListPendingBalanceTickets($request->input('plate_number'));
+        return $listPendingBalanceTickets->execute();
     }
 
     /**

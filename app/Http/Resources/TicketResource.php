@@ -15,7 +15,7 @@ class TicketResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
+            'payment_reference' => $this->id,
             'entry_time' => $this->entry_time,
             'exit_time' => $this->exit_time,
             'charge_to_pay' => $this->charge_to_pay,
