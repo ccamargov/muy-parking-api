@@ -51,7 +51,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"plate_number\": \"Pg1JPz\"\r\n}",
+					"raw": "{\r\n    \"plate_number\": \"PW9LdE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -124,7 +124,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"plate_number\": \"Pg1JPz\"\r\n}",
+					"raw": "{\r\n    \"plate_number\": \"PW9LdE\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -218,6 +218,74 @@
 						{
 							"key": "api_token",
 							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
+			"name": "[H.U 005] Get Pending Balance by Plate - 422 Params incomplete",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url_base}}/api/v1/pending-balance?api_token={{api_token}}",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pending-balance"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						}
+					]
+				},
+				"description": "[H.U 002] Save Entrance Ticket"
+			},
+			"response": []
+		},
+		{
+			"name": "[H.U 005] Get Pending Balance by Plate - 200 Success",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{url_base}}/api/v1/pending-balance?api_token={{api_token}}&plate_number=bRUal0",
+					"host": [
+						"{{url_base}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"pending-balance"
+					],
+					"query": [
+						{
+							"key": "api_token",
+							"value": "{{api_token}}"
+						},
+						{
+							"key": "plate_number",
+							"value": "bRUal0"
 						}
 					]
 				},
