@@ -20,4 +20,6 @@ Route::group(['prefix' => 'v1', 'middleware' => 'auth:api'], function () {
     Route::post('ticket-entrance', 'TicketController@storeEntrance')->name('ticket.entrance');
     // Define route of API to: UseCase: Store exit time to ticket in parking system
     Route::post('ticket-departure', 'TicketController@storeDeparture')->name('ticket.departure');
+    // Define route of API to: UseCase: Create a new Parking Contract for Owner, Vehicle and Plan.
+    Route::post('parking-contract', 'ParkingContractController@createContract')->name('parking.contract');
 });
