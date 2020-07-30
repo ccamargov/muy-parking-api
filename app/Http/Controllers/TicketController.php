@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use App\UseCases\StoreEntranceTicket;
 use App\UseCases\StoreDepartureTicket;
 use App\UseCases\ListPendingBalanceTickets;
+use App\UseCases\PayTicket;
 
 class TicketController extends Controller
 {
@@ -54,6 +55,23 @@ class TicketController extends Controller
         ]);
         $listPendingBalanceTickets = new ListPendingBalanceTickets($request->input('plate_number'));
         return $listPendingBalanceTickets->execute();
+    }
+
+    /**
+     * Update payment ammount for ticket by reference_payment
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function payTicketByReference(Request $request) {
+        $this->validateData($request, [
+            'payment_reference' => 'required',
+            'owner_ammount' => 'required'
+        ]);
+        $PayTicket = new PayTicket($request->input('payment_reference'),
+            $request->input('owner_ammount'));
+        return $PayTicket->execute();
     }
 
     /**

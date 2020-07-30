@@ -20,8 +20,8 @@ class CreateTicketsTable extends Migration
             // Ticket data
             $table->timestamp('entry_time')->nullable(false);
             $table->timestamp('exit_time')->nullable();
-            $table->decimal('charge_paid', 2, 2)->nullable();
-            $table->decimal('exchange_value', 2, 2)->nullable();
+            $table->decimal('charge_paid')->nullable();
+            $table->decimal('exchange_value')->nullable();
             $table->timestamp('payment_time')->nullable();
             $table->bigInteger('total_stay_mins')->nullable();
             $table->timestamps();
