@@ -4,6 +4,7 @@ namespace App\UseCases;
 use App\Vehicle;
 use App\ParkingContract;
 use App\Ticket;
+use App\Plan;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 use App\Http\Resources\TicketResource;
@@ -32,6 +33,13 @@ final class StoreDepartureTicket
                 $activeTicket = Ticket::getActiveTicketByContractId($parkingContract->id);
                 if ($activeTicket) {
                     $activeTicket->exit_time = Carbon::now();
+                    // Calculate total mins of the car in the parking.
+                    $activeTicket->total_stay_mins =
+                        $activeTicket->exit_time->diff($activeTicket->entry_time)->format('%i');
+                    // Get charge to pay from plan data (Only apply to dailyPayment)
+                    $activeTicket->charge_to_pay = $this->getTicketCharge($parkingContract->plan_id,
+                        $activeTicket->total_stay_mins);
+                    // Get charge to pay
                     if ($activeTicket->save()) {
                         return new TicketResource($activeTicket);
                     }
@@ -52,6 +60,14 @@ final class StoreDepartureTicket
                 ['error_msg' => sprintf(self::VEHICLE_NOT_FOUND_ERR_MSG, $this->plateNumber)],
                 Response::HTTP_NOT_FOUND
             );
+        }
+    }
+
+    private function getTicketCharge(int $planId, int $totalMins)
+    {
+        $plan = Plan::find($planId);
+        if ($plan->has_daily_payment) {
+            return $plan->daily_payment_charge * $totalMins;
         }
     }
 }

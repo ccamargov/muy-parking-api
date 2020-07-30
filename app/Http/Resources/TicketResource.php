@@ -18,6 +18,7 @@ class TicketResource extends JsonResource
             'id' => $this->id,
             'entry_time' => $this->entry_time,
             'exit_time' => $this->entry_time,
+            'charge_to_pay' => $this->charge_to_pay,
             'charge_paid' => $this->charge_paid,
             'exchange_value' => $this->exchange_value,
             'payment_time' => $this->payment_time,

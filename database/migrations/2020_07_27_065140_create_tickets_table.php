@@ -23,7 +23,7 @@ class CreateTicketsTable extends Migration
             $table->decimal('charge_paid', 2, 2)->nullable();
             $table->decimal('exchange_value', 2, 2)->nullable();
             $table->timestamp('payment_time')->nullable();
-            $table->decimal('total_stay_mins', 1, 1)->nullable();
+            $table->bigInteger('total_stay_mins')->nullable();
             $table->timestamps();
         });
     }
